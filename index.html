@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For My Queen 💍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --reze-pink: #ff00cc; 
+            --indie-blue: #00d4ff;
+            --premium-gold: #f3cf7a;
+            --glass-core: rgba(255, 255, 255, 0.06);
+            --glass-edge: rgba(255, 255, 255, 0.15);
+        }
+        
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body, html { 
+            margin: 0; padding: 0; background: #000; color: white; 
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh; width: 100%;
+            overflow-y: scroll; 
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .fixed-bg { position: fixed; inset: 0; z-index: -2; background: #000; }
+        .aura { position: fixed; border-radius: 50%; filter: blur(100px); z-index: -1; opacity: 0.1; }
+        .aura-pink { width: 80vw; height: 80vw; background: var(--reze-pink); top: -20%; right: -10%; }
+        .aura-blue { width: 90vw; height: 90vw; background: var(--indie-blue); bottom: -30%; left: -20%; }
+
+        #main-container { display: none; }
+        .section { height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; scroll-snap-align: center; scroll-snap-stop: always; }
+        
+        .glass-card { 
+            background: var(--glass-core); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); 
+            border: 1px solid var(--glass-edge); padding: 40px 25px; border-radius: 35px; 
+            max-width: 450px; width: 100%; text-align: center; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .section.visible .glass-card { opacity: 1; transform: translateY(0); }
+
+        .chapter-title { font-family: 'Pinyon Script', cursive; font-size: 3.2rem; color: var(--reze-pink); margin-bottom: 10px; }
+        .letter-text { font-size: 1rem; line-height: 1.7; color: rgba(255,255,255,0.9); font-weight: 300; }
+        #timer { color: var(--indie-blue); font-weight: 600; margin: 15px 0; font-size: 1.2rem; }
+        .highlight-name { color: var(--reze-pink); font-weight: 600; }
+        .simp-quote { margin-top: 30px; font-style: italic; font-size: 0.9rem; color: var(--premium-gold); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; opacity: 0.8; }
+
+        #envelope-overlay { position: fixed; inset: 0; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; cursor: pointer; transition: opacity 0.8s ease; }
+        .envelope { width: 140px; height: 90px; background: #ff4d94; border-radius: 0 0 12px 12px; box-shadow: 0 0 40px var(--reze-pink); position: relative; display: flex; justify-content: center; align-items: center; }
+        .envelope::before { content: ""; position: absolute; top: -50px; left: 0; border-bottom: 50px solid #ff80b3; border-left: 70px solid transparent; border-right: 70px solid transparent; }
+        .glowing-x { font-size: 30px; color: white; text-shadow: 0 0 15px #fff; animation: breathe 2s infinite ease-in-out; }
+        @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop playsinline preload="auto">
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="envelope-overlay" onclick="handleUnlock()">
+        <div class="envelope"><div class="glowing-x">X♡</div></div>
+        <p style="color:white; margin-top:50px; font-size:0.75rem; letter-spacing:4px; font-weight:bold;">OPEN LETTER</p>
+        <p id="loading-text" style="display:none; color:var(--indie-blue); margin-top:20px; font-size:0.7rem; letter-spacing:2px;">WAKING UP THE MAGIC...</p>
+    </div>
+
+    <div class="fixed-bg"></div>
+    <div class="aura aura-pink"></div>
+    <div class="aura aura-blue"></div>
+
+    <div id="main-container">
+        <div class="section">
+            <div class="glass-card">
+                <h1 class="chapter-title">To My Queen...</h1>
+                <div id="timer">00d : 00h : 00m : 00s</div>
+                <p style="opacity:0.4; font-size:0.7rem; letter-spacing:2px; color: var(--indie-blue);">Swipe down baby</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="glass-card">
+                <p class="letter-text">
+                    my dearest <span class="highlight-name">Mrs M</span> 🥺❤️💍<br><br>
+                    from the moment I noticed you, I had no idea I was looking at the woman who would change my life forever. what started as simple msgs between two people who had chemistry became the safest place my heart has ever known🥺🫶🏼
+                </p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="glass-card">
+                <p class="letter-text">
+                    since the day we made it official on <span class="highlight-name">3 November 2024</span>, you became my peace, my best friend, my home and the love I once prayed for.♡<br><br>
+                    we have crossed distance and created memories that still replay in my mind like my favorite movie.
+                </p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="glass-card">
+                <p class="letter-text">
+                    every single second with you is a chapter I would relive an <span class="highlight-name">infinity</span> times😭❤️🦋<br><br>
+                    your patience, your sacrifices and the way you continue to choose me remind me every day how blessed I am to call you mine🥺❤️😭
+                </p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="glass-card">
+                <p class="letter-text">
+                    I promise to keep choosing you, to keep growing with you and to keep building the beautiful story that is only just beginning.🌻
+                </p>
+                <h2 style="font-family:'Pinyon Script'; color:var(--reze-pink); font-size:2.5rem; margin:15px 0;">Happy Valentine's Day!</h2>
+                <p style="opacity:0.6; font-size:0.7rem; letter-spacing:4px; font-weight:bold;">MR & MRS MUHARIWA</p>
+                
+                <div class="simp-quote">
+                    "being your simp is a full time job and I'm dedicated" 🫡❤️
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('bg-music');
+        
+        function handleUnlock() {
+            const overlay = document.getElementById('envelope-overlay');
+            const loading = document.getElementById('loading-text');
+            
+            loading.style.display = 'block';
+
+            // FORCE AUDIO START - Multiple attempts
+            const startAudio = () => {
+                audio.volume = 1.0;
+                audio.play().catch(() => {
+                    // Fallback for strict browsers
+                    window.addEventListener('scroll', () => audio.play(), {once: true});
+                    window.addEventListener('touchstart', () => audio.play(), {once: true});
+                });
+            };
+            
+            startAudio();
+
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                    document.getElementById('main-container').style.display = 'block';
+                    initObserver();
+                    startTimer();
+                }, 800);
+            }, 3000); 
+        }
+
+        function initObserver() {
+            const options = { threshold: 0.3 };
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, options);
+            document.querySelectorAll('.section').forEach(s => obs.observe(s));
+        }
+
+        function startTimer() {
+            const start = new Date("November 3, 2024 00:00:00").getTime();
+            setInterval(() => {
+                const diff = new Date().getTime() - start;
+                const d = Math.floor(diff / 86400000);
+                const h = Math.floor((diff % 86400000) / 3600000);
+                const min = Math.floor((diff % 3600000) / 60000);
+                const s = Math.floor((diff % 60000) / 1000);
+                document.getElementById('timer').innerText = d + "d : " + h + "h : " + min + "m : " + s + "s";
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
